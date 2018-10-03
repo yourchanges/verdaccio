@@ -12,17 +12,20 @@ import Info from '@material-ui/icons/Info';
 import Help from '@material-ui/icons/Help';
 import Tooltip from '@material-ui/core/Tooltip/index';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { default as IconSearch } from '@material-ui/icons/Search';
 
 import { getRegistryURL } from '../../utils/url';
 import Link from '../Link';
 import Logo from '../Logo';
-import Label from '../Label';
 import CopyToClipBoard from '../CopyToClipBoard/index';
 import RegistryInfoDialog from '../RegistryInfoDialog';
+import AutoComplete from '../AutoComplete';
 
 import type { Node } from 'react';
 import { IProps, IState } from './interfaces';
-import { Wrapper, InnerWrapper, Greetings } from './styles';
+import colors from '../../utils/styles/colors';
+import { NavBar, InnerNavBar, MobileNavBar, InnerMobileNavBar, LeftSide, RightSide, Search, IconSearchButton } from './styles';
 
 class Header extends Component<IProps, IState> {
   handleLoggedInMenu: Function;
@@ -40,10 +43,24 @@ class Header extends Component<IProps, IState> {
     this.handleCloseRegistryInfoDialog = this.handleCloseRegistryInfoDialog.bind(this);
     this.handleToggleLogin = this.handleToggleLogin.bind(this);
     this.renderInfoDialog = this.renderInfoDialog.bind(this);
+    this.handleDismissMNav = this.handleDismissMNav.bind(this);
+    this.handleToggleMNav = this.handleToggleMNav.bind(this);
     this.state = {
       openInfoDialog: false,
       registryUrl: '',
+      packages: props.packages,
+      showMobileNavBar: false,
     };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.packages !== prevState.packages) {
+      return {
+        packages: nextProps.packages,
+      };
+    }
+
+    return null;
   }
 
   componentDidMount() {
@@ -101,12 +118,42 @@ class Header extends Component<IProps, IState> {
     );
   }
 
+  handleToggleMNav() {
+    this.setState({
+      showMobileNavBar: !this.state.showMobileNavBar,
+    });
+  }
+
+  handleDismissMNav() {
+    this.setState({
+      showMobileNavBar: false,
+    });
+  }
+
   renderLeftSide(): Node {
-    const { registryUrl } = this.state;
+    const { packages } = this.state;
+    const { onSearch, search, ...others } = this.props;
     return (
-      <a href={`${registryUrl}/#/`}>
-        <Logo />
-      </a>
+      <LeftSide>
+        <Link to="/">
+          <Logo />
+        </Link>
+        <Search>
+          <AutoComplete
+            suggestions={packages}
+            onChange={onSearch}
+            value={search}
+            placeholder="Search packages"
+            color={colors.white}
+            startAdornment={
+              <InputAdornment position="start" style={{ color: colors.white }}>
+                <IconSearch />
+              </InputAdornment>
+            }
+            {...others}
+          />
+        </Search>
+      </LeftSide>
     );
   }
 
@@ -114,7 +161,12 @@ class Header extends Component<IProps, IState> {
     const { username = '' } = this.props;
     const installationLink = 'https://verdaccio.org/docs/en/installation';
     return (
-      <div>
+      <RightSide>
+        <Tooltip title="Search packages" disableFocusListener>
+          <IconSearchButton color="inherit" onClick={this.handleToggleMNav}>
+            <IconSearch />
+          </IconSearchButton>
+        </Tooltip>
         <Tooltip title="Documentation" disableFocusListener>
           <IconButton color="inherit" component={Link} to={installationLink} blank>
             <Help />
@@ -132,7 +184,7 @@ class Header extends Component<IProps, IState> {
             Login
           </Button>
         )}
-      </div>
+      </RightSide>
     );
   }
 
@@ -140,12 +192,12 @@ class Header extends Component<IProps, IState> {
    * render popover menu
    */
   renderMenu(): Node {
-    const { handleLogout, username = '' } = this.props;
+    const { onLogout } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     return (
       <React.Fragment>
-        <IconButton id="header--button-account" aria-owns="sidebar-menu" aria-haspopup="true" color="inherit" onClick={this.handleLoggedInMenu}>
+        <IconButton id="header--button-account" color="inherit" onClick={this.hanldeToggleMNav}>
           <AccountCircle />
         </IconButton>
         <Menu
@@ -162,11 +214,7 @@ class Header extends Component<IProps, IState> {
           open={open}
           onClose={this.handleLoggedInMenuClose}
         >
-          <MenuItem disabled>
-            <Greetings>{`Hi,`}</Greetings>
-            <Label text={username} limit={140} weight="bold" capitalize />
-          </MenuItem>
-          <MenuItem onClick={handleLogout} id="header--button-logout">
+          <MenuItem onClick={onLogout} id="header--button-logout">
             Logout
           </MenuItem>
         </Menu>
@@ -188,14 +236,28 @@ class Header extends Component<IProps, IState> {
   }
 
   render() {
+    const { packages, showMobileNavBar } = this.state;
+    const { onSearch, search, ...others } = this.props;
     return (
-      <Wrapper position="static">
-        <InnerWrapper>
-          {this.renderLeftSide()}
-          {this.renderRightSide()}
-        </InnerWrapper>
-        {this.renderInfoDialog()}
-      </Wrapper>
+      <div>
+        <NavBar position="static">
+          <InnerNavBar>
+            {this.renderLeftSide()}
+            {this.renderRightSide()}
+          </InnerNavBar>
+          {this.renderInfoDialog()}
+        </NavBar>
+        {showMobileNavBar && (
+          <MobileNavBar>
+            <InnerMobileNavBar>
+              <AutoComplete suggestions={packages} onChange={onSearch} value={search} placeholder="Search packages" disableUnderline {...others} />
+            </InnerMobileNavBar>
+            <Button id="header--button-login" color="inherit" onClick={this.handleDismissMNav}>
+              Cancel
+            </Button>
+          </MobileNavBar>
+        )}
+      </div>
     );
   }
 }
