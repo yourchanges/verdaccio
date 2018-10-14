@@ -35,16 +35,8 @@ class Header extends Component<IProps, IState> {
   handleToggleLogin: Function;
   renderInfoDialog: Function;
 
-  constructor(props: Object) {
+  constructor(props: IProps) {
     super(props);
-    this.handleLoggedInMenu = this.handleLoggedInMenu.bind(this);
-    this.handleLoggedInMenuClose = this.handleLoggedInMenuClose.bind(this);
-    this.handleOpenRegistryInfoDialog = this.handleOpenRegistryInfoDialog.bind(this);
-    this.handleCloseRegistryInfoDialog = this.handleCloseRegistryInfoDialog.bind(this);
-    this.handleToggleLogin = this.handleToggleLogin.bind(this);
-    this.renderInfoDialog = this.renderInfoDialog.bind(this);
-    this.handleDismissMNav = this.handleDismissMNav.bind(this);
-    this.handleToggleMNav = this.handleToggleMNav.bind(this);
     this.state = {
       openInfoDialog: false,
       registryUrl: '',
@@ -53,7 +45,7 @@ class Header extends Component<IProps, IState> {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps: IProps, prevState: IState) {
     if (nextProps.packages !== prevState.packages) {
       return {
         packages: nextProps.packages,
@@ -73,64 +65,64 @@ class Header extends Component<IProps, IState> {
   /**
    * opens popover menu for logged in user.
    */
-  handleLoggedInMenu(event: SyntheticEvent<HTMLElement>) {
+  handleLoggedInMenu = (event: SyntheticEvent<HTMLElement>) => {
     this.setState({
       anchorEl: event.currentTarget,
     });
-  }
+  };
 
   /**
    * closes popover menu for logged in user
    */
-  handleLoggedInMenuClose() {
+  handleLoggedInMenuClose = () => {
     this.setState({
       anchorEl: null,
     });
-  }
+  };
 
   /**
    * opens registry information dialog.
    */
-  handleOpenRegistryInfoDialog() {
+  handleOpenRegistryInfoDialog = () => {
     this.setState({
       openInfoDialog: true,
     });
-  }
+  };
 
   /**
    * closes registry information dialog.
    */
-  handleCloseRegistryInfoDialog() {
+  handleCloseRegistryInfoDialog = () => {
     this.setState({
       openInfoDialog: false,
     });
-  }
+  };
 
   /**
    * close/open popover menu for logged in users.
    */
-  handleToggleLogin() {
+  handleToggleLogin = () => {
     this.setState(
       {
         anchorEl: null,
       },
       this.props.toggleLoginModal
     );
-  }
+  };
 
-  handleToggleMNav() {
+  handleToggleMNav = () => {
     this.setState({
       showMobileNavBar: !this.state.showMobileNavBar,
     });
-  }
+  };
 
-  handleDismissMNav() {
+  handleDismissMNav = () => {
     this.setState({
       showMobileNavBar: false,
     });
-  }
+  };
 
-  renderLeftSide(): Node {
+  renderLeftSide = (): Node => {
     const { packages } = this.state;
     const { onSearch, search, ...others } = this.props;
     return (
@@ -155,9 +147,9 @@ class Header extends Component<IProps, IState> {
         </Search>
       </LeftSide>
     );
-  }
+  };
 
-  renderRightSide(): Node {
+  renderRightSide = (): Node => {
     const { username = '' } = this.props;
     const installationLink = 'https://verdaccio.org/docs/en/installation';
     return (
@@ -186,12 +178,12 @@ class Header extends Component<IProps, IState> {
         )}
       </RightSide>
     );
-  }
+  };
 
   /**
    * render popover menu
    */
-  renderMenu(): Node {
+  renderMenu = (): Node => {
     const { onLogout } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
@@ -220,9 +212,9 @@ class Header extends Component<IProps, IState> {
         </Menu>
       </React.Fragment>
     );
-  }
+  };
 
-  renderInfoDialog(): Node {
+  renderInfoDialog = (): Node => {
     const { scope } = this.props;
     const { openInfoDialog, registryUrl } = this.state;
     return (
@@ -233,7 +225,7 @@ class Header extends Component<IProps, IState> {
         </div>
       </RegistryInfoDialog>
     );
-  }
+  };
 
   render() {
     const { packages, showMobileNavBar } = this.state;

@@ -15,7 +15,7 @@ import { fontWeight } from '../../utils/styles/sizes';
 import { Wrapper, InputField } from './styles';
 import { IProps } from './interfaces';
 
-function renderInputComponent(inputProps) {
+const renderInputComponent = (inputProps): Node => {
   const { inputRef = () => {}, ref, startAdornment, disableUnderline, ...others } = inputProps;
   return (
     <InputField
@@ -23,7 +23,7 @@ function renderInputComponent(inputProps) {
       InputProps={{
         inputRef: node => {
           ref(node);
-          inputRef(node);
+          inputRef();
         },
         startAdornment,
         disableUnderline,
@@ -31,13 +31,11 @@ function renderInputComponent(inputProps) {
       {...others}
     />
   );
-}
+};
 
-function getSuggestionValue(suggestion) {
-  return suggestion.label;
-}
+const getSuggestionValue = (suggestion): string => suggestion.label;
 
-function renderSuggestion(suggestion, { query, isHighlighted }) {
+const renderSuggestion = (suggestion, { query, isHighlighted }): Node => {
   const matches = match(suggestion.label, query);
   const parts = parse(suggestion.label, matches);
 
@@ -58,7 +56,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
       </div>
     </MenuItem>
   );
-}
+};
 
 const AutoComplete = ({
   suggestions,

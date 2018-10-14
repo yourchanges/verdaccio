@@ -26,38 +26,23 @@ import classes from "./app.scss";
 import 'normalize.css';
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.handleLogout = this.handleLogout.bind(this);
-    this.toggleLoginModal = this.toggleLoginModal.bind(this);
-    this.doLogin = this.doLogin.bind(this);
-    this.loadLogo = this.loadLogo.bind(this);
-    this.isUserAlreadyLoggedIn = this.isUserAlreadyLoggedIn.bind(this);
-    this.setLoading = this.setLoading.bind(this);
-    this.handleClearPackages = this.handleClearPackages.bind(this);
-    this.handleFetchPackages = this.handleFetchPackages.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleShowAlertDialog = this.handleShowAlertDialog.bind(this);
-    this.handleDismissAlertDialog = this.handleDismissAlertDialog.bind(this);
-    this.getfilteredPackages = this.getfilteredPackages.bind(this);
-    this.state = {
-      error: {},
-      logoUrl: '',
-      user: {},
-      scope: (window.VERDACCIO_SCOPE) ? `${window.VERDACCIO_SCOPE}:` : '',
-      showLoginModal: false,
-      isUserLoggedIn: false,
-      packages: [],
-      filteredPackages: [],
-      search: "",
-      isLoading: false,
-      showAlertDialog: false,
-      alertDialogContent: {
-        title: '',
-        message: '',
-        packages: []
-      },
-    };
+  state = {
+    error: {},
+    logoUrl: '',
+    user: {},
+    scope: (window.VERDACCIO_SCOPE) ? `${window.VERDACCIO_SCOPE}:` : '',
+    showLoginModal: false,
+    isUserLoggedIn: false,
+    packages: [],
+    filteredPackages: [],
+    search: "",
+    isLoading: false,
+    showAlertDialog: false,
+    alertDialogContent: {
+      title: '',
+      message: '',
+      packages: []
+    },
   }
 
   async componentDidMount() {
@@ -68,7 +53,7 @@ export default class App extends Component {
     await this.setLoading(false);
   }
 
-  async loadLogo() {
+  loadLogo = async () => {
    return (
      new Promise( async resolve => {
       const logoUrl = await logo();
@@ -79,7 +64,7 @@ export default class App extends Component {
    );
   }
 
-  async isUserAlreadyLoggedIn() {
+  isUserAlreadyLoggedIn = async () => {
     // checks for token validity
     const token = storage.getItem('token');
     const username = storage.getItem('username');
@@ -99,7 +84,7 @@ export default class App extends Component {
    );
   }
 
-  async loadPackages() {
+  loadPackages = async () => {
     const { search } = this.state;
     return (
       new Promise(async (resolve, reject) => {
@@ -119,15 +104,15 @@ export default class App extends Component {
         } catch (error) {
           await this.handleShowAlertDialog({
             title: 'Warning',
-            message: `Unable to load package list: ${error.error}`
+            message: `Unable to load package list: ${error.message}`
           });
-          reject();
+          reject(new Error(error));
         }
       })
     );
   }
 
-  async setLoading(isLoading) {
+  setLoading = async (isLoading) => {
     return (
       new Promise((resolve) => {
         this.setState({
@@ -141,7 +126,7 @@ export default class App extends Component {
    * Toggles the login modal
    * Required by: <LoginModal /> <Header />
    */
-  toggleLoginModal() {
+  toggleLoginModal = () => {
     this.setState((prevState) => ({
       showLoginModal: !prevState.showLoginModal,
       error: {}
@@ -152,7 +137,7 @@ export default class App extends Component {
    * handles login
    * Required by: <Header />
    */
-  async doLogin(usernameValue, passwordValue) {
+  doLogin = async (usernameValue, passwordValue) => {
     const { username, token, error } = await makeLogin(
       usernameValue,
       passwordValue
@@ -187,9 +172,8 @@ export default class App extends Component {
    * Logouts user
    * Required by: <Header />
    */
-  async handleLogout() {
-   return (
-     new Promise(async resolve => {
+  handleLogout = async () => (
+    new Promise(async resolve => {
       await storage.removeItem('username');
       await storage.removeItem('token');
       this.setState({
@@ -197,44 +181,43 @@ export default class App extends Component {
         isUserLoggedIn: false
       }, () => resolve());
      })
-   );
-  }
+  )
 
-  handleFetchPackages({ value }) {
+  handleFetchPackages = ({ value }) => {
     this.setState({
       filteredPackages: this.getfilteredPackages(value),
     });
   }
 
-  handleClearPackages() {
+  handleClearPackages = () => {
     this.setState({
       filteredPackages: this.state.packages
     });
   }
 
   // eslint-disable-next-line no-unused-vars
-  handleSearch(_, { newValue }) {
+  handleSearch = (_, { newValue }) => {
     this.setState({
       search: newValue,
     });
   };
 
-  handleShowAlertDialog(content) {
-    return new Promise((resolve => {
+  handleShowAlertDialog = (content) => (
+    new Promise((resolve => {
       this.setState({
         showAlertDialog: true,
         alertDialogContent: content
       }, () => resolve());
-    }));
-  };
+    }))
+  )
 
-  handleDismissAlertDialog() {
+  handleDismissAlertDialog = () => {
     this.setState({
       showAlertDialog: false
     });
   };
 
-  getfilteredPackages(value) {
+  getfilteredPackages = (value) => {
     const { packages } = this.state;
     const inputValue = deburr(value.trim()).toLowerCase();
     const inputLength = inputValue.length;
@@ -258,7 +241,7 @@ export default class App extends Component {
   }
   
 
-  renderHeader() {
+  renderHeader = () => {
     const { logoUrl, filteredPackages, user, ...others } = this.state;
     return (
       <Header
@@ -275,7 +258,7 @@ export default class App extends Component {
     );
   }
 
-  renderAlertDialog() {
+  renderAlertDialog = () => {
     return (
       <Dialog
         open={this.state.showAlertDialog}
@@ -313,7 +296,7 @@ export default class App extends Component {
     );
   }
 
-  renderLoginModal() {
+  renderLoginModal = () => {
     const { error, showLoginModal } = this.state;
     return (
       <LoginModal
