@@ -10,6 +10,9 @@ export const Content = styled.div`
     background-color: #fff;
     flex: 1;
     position: relative;
+    position: relative;
+    height: 100%;
+    display: flex;
   }
 `;
 

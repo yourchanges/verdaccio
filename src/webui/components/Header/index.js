@@ -124,6 +124,10 @@ class Header extends Component<IProps, IState> {
     });
   };
 
+  handleGoToAccount = () => {
+    window.location.href = `${getRegistryURL()}/#/account`;
+  };
+
   renderLeftSide = (): Node => {
     const { packages } = this.state;
     const { onSearch = () => {}, search = '', withoutSearch = false, ...others } = this.props;
@@ -215,6 +219,15 @@ class Header extends Component<IProps, IState> {
           <MenuItem disabled>
             <Greetings>{`Hi,`}</Greetings>
             <Label text={username} limit={140} weight="bold" capitalize />
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleGoToAccount();
+              this.handleLoggedInMenuClose();
+            }}
+            id="header--button-profile"
+          >
+            Account
           </MenuItem>
           <MenuItem onClick={onLogout} id="header--button-logout">
             Logout
