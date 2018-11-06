@@ -1,31 +1,53 @@
+/**
+ * @prettier
+ */
+
 import React, { Component } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-
+import Avatar from '@material-ui/core/Avatar';
 import Box from '../../components/Box';
 
-import { Wrapper } from './styles';
+import { Wrapper, Password, Inner, Label, FormField, Left, Right } from './styles';
 
 class Account extends Component {
+  handleUpdateAvatar = () => {
+    console.log('update');
+  };
   render() {
     return (
-        <Wrapper>
-            <Box>
-              <FormControl fullWidth>
+      <Wrapper>
+        <Inner>
+          <Box>
+            <Left>
+              <Avatar src="https://material-ui.com/static/images/uxceo-128.jpg" />
+            </Left>
+            <Right>
+              <FormField>
+                <InputLabel htmlFor="currentPassword">Name</InputLabel>
+                <Input id="login--form-password" />
+              </FormField>
+            </Right>
+          </Box>
+          <Label>Change Password</Label>
+          <Box>
+            <Password>
+              <FormField>
                 <InputLabel htmlFor="currentPassword">Current password</InputLabel>
                 <Input id="login--form-password" />
-              </FormControl>
-              <FormControl fullWidth>
+              </FormField>
+              <FormField>
                 <InputLabel htmlFor="newPassword">New password</InputLabel>
                 <Input id="login--form-newPassword" />
-              </FormControl>
-              <FormControl fullWidth>
+              </FormField>
+              <FormField>
                 <InputLabel htmlFor="repeatNewPassword">Repeat new password</InputLabel>
                 <Input id="login--form-repeatNewPassword" />
-              </FormControl>
-            </Box>
-        </Wrapper>
+              </FormField>
+            </Password>
+          </Box>
+        </Inner>
+      </Wrapper>
     );
   }
 }

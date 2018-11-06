@@ -6,7 +6,7 @@ import {asyncComponent} from './utils/asyncComponent';
 
 const DetailPackage = asyncComponent(() => import('./pages/detail'));
 import HomePage from './pages/home';
-import Account from './pages/Account';
+import Account from './pages/account';
 
 class RouterApp extends Component {
   static propTypes = {
@@ -41,8 +41,8 @@ class RouterApp extends Component {
             <Route
               exact
               path="/account"
-              render={(props) => (
-                <Account {...props} {...this.props} />
+              render={() => (
+                <Account />
               )}
             />
           </Switch>
