@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 import {asyncComponent} from './utils/asyncComponent';
 
@@ -41,8 +41,17 @@ class RouterApp extends Component {
             <Route
               exact
               path="/account"
-              render={() => (
-                <Account />
+              render={(props) => (
+                this.props.isUserLoggedIn ? (
+                  <Account />
+                ) :  (
+                  <Redirect
+                    to={{
+                      pathname: "/",
+                      state: { from: props.location }
+                    }}
+                  />
+                )
               )}
             />
           </Switch>

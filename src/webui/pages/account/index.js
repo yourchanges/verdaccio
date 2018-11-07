@@ -5,47 +5,45 @@
 import React, { Component } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
-import Avatar from '@material-ui/core/Avatar';
+import Label from '../../components/Label';
 import Box from '../../components/Box';
+import Avatar from '../../components/Avatar';
 
-import { Wrapper, Password, Inner, Label, FormField, Left, Right } from './styles';
+import { Wrapper, Inner, FormField, Button, Actions } from './styles';
 
 class Account extends Component {
-  handleUpdateAvatar = () => {
-    console.log('update');
+  hanldeChangeAvatar = () => {
+    console.log('update avatar');
   };
   render() {
     return (
       <Wrapper>
         <Inner>
-          <Box>
-            <Left>
-              <Avatar src="https://material-ui.com/static/images/uxceo-128.jpg" />
-            </Left>
-            <Right>
-              <FormField>
-                <InputLabel htmlFor="currentPassword">Name</InputLabel>
-                <Input id="login--form-password" />
-              </FormField>
-            </Right>
+          <Box className="marginB20px">
+            <Avatar size="md" onClick={this.hanldeChangeAvatar}>
+              PO
+            </Avatar>
           </Box>
-          <Label>Change Password</Label>
-          <Box>
-            <Password>
-              <FormField>
-                <InputLabel htmlFor="currentPassword">Current password</InputLabel>
-                <Input id="login--form-password" />
-              </FormField>
-              <FormField>
-                <InputLabel htmlFor="newPassword">New password</InputLabel>
-                <Input id="login--form-newPassword" />
-              </FormField>
-              <FormField>
-                <InputLabel htmlFor="repeatNewPassword">Repeat new password</InputLabel>
-                <Input id="login--form-repeatNewPassword" />
-              </FormField>
-            </Password>
+          <Label text="Change Password" weight="bold" className="marginB20px displayBlock" primary />
+          <Box className="marginB20px">
+            <FormField>
+              <InputLabel htmlFor="account--form-currentPassword">Current password</InputLabel>
+              <Input id="account--form-currentPassword" />
+            </FormField>
+            <FormField>
+              <InputLabel htmlFor="account--form-newPassword">New password</InputLabel>
+              <Input id="account--form-newPassword" />
+            </FormField>
+            <FormField>
+              <InputLabel htmlFor="account--form-repeatNewPassword">Repeat new password</InputLabel>
+              <Input id="account--form-repeatNewPassword" />
+            </FormField>
           </Box>
+          <Actions>
+            <Button variant="contained" id="account--form-saveBtn">
+              Save
+            </Button>
+          </Actions>
         </Inner>
       </Wrapper>
     );

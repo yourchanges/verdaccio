@@ -2,6 +2,14 @@
 @import "mixins";
 
 :global {
+  .marginB20px {
+    margin-bottom: 20px;
+  }
+
+  .displayBlock {
+   display: block;
+  }
+
   .container {
     margin-top: 20px;
     flex: 1;

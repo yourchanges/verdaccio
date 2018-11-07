@@ -4,9 +4,8 @@
 
 import styled from 'react-emotion';
 import FormControl from '@material-ui/core/FormControl';
-
+import { default as Btn } from '@material-ui/core/Button';
 import colors from '../../utils/styles/colors';
-import { fontWeight } from '../../utils/styles/sizes';
 
 export const Wrapper = styled.div`
   && {
@@ -21,16 +20,7 @@ export const Wrapper = styled.div`
 export const Inner = styled.div`
   && {
     width: 780px;
-  }
-`;
-
-export const Label = styled.div`
-  && {
-    text-align: left;
-    color: ${colors.primary};
-    font-weight: ${fontWeight.bold};
-    font-size: 1.2em;
-    margin: 0 0 24px 0;
+    margin: 20px 0;
   }
 `;
 
@@ -39,28 +29,19 @@ export const FormField = styled(FormControl)`
   width: 100%;
 `;
 
-export const Profile = styled.div`
-  && {
-  }
-`;
-
-export const Password = styled.div`
-  && {
-    width: 100%;
-  }
-`;
-
-export const Left = styled.div`
+export const Actions = styled.div`
   && {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
+    justify-content: flex-end;
   }
 `;
 
-export const Right = styled.div`
+export const Button = styled(Btn)`
   && {
-    flex: 1;
+    background-color: ${colors.primary};
+    color: ${colors.white};
+    &:hover {
+      background-color: #45573b;
+    }
   }
 `;
