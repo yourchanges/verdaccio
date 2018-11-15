@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>单元测试 · Verdaccio</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="所有测试都被分成3 个文件夹："/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="单元测试 · Verdaccio"/><meta property="og:type" content="website"/><meta property="og:url" content="https://verdaccio.org/index.html"/><meta property="og:description" content="所有测试都被分成3 个文件夹："/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>单元测试 · Verdaccio</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Verdaccio has strong focus on unit testing and end to end testing. If you are willing to contribute, please refer to the following [guide for more information](https://github.com/verdaccio/verdaccio/wiki/Developing-new-tests)."/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="单元测试 · Verdaccio"/><meta property="og:type" content="website"/><meta property="og:url" content="https://verdaccio.org/index.html"/><meta property="og:description" content="Verdaccio has strong focus on unit testing and end to end testing. If you are willing to contribute, please refer to the following [guide for more information](https://github.com/verdaccio/verdaccio/wiki/Developing-new-tests)."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -12,7 +12,7 @@
             {"zIndex":100}
           )
         });
-        </script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/logo/symbol/svg/verdaccio-tiny.svg" alt="Verdaccio"/><h2 class="headerTitleWithLogo">Verdaccio</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/installation" target="_self">文档</a></li><li class=""><a href="https://medium.com/verdaccio" target="_self">博客</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="https://github.com/verdaccio" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/zh-CN/team" target="_self">团队</a></li><li class=""><a href="https://opencollective.com/verdaccio" target="_self">捐赠</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/unit-testing">English</a></li><li><a href="/docs/es-ES/unit-testing">Español</a></li><li><a href="https://crowdin.com/project/verdaccio" target="_blank" rel="noreferrer noopener">帮助翻译</a></li></ul></div></li><script>
+        </script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/logo/symbol/svg/verdaccio-tiny.svg" alt="Verdaccio"/><h2 class="headerTitleWithLogo">Verdaccio</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/installation" target="_self">文档</a></li><li class=""><a href="https://medium.com/verdaccio" target="_self">博客</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="https://github.com/verdaccio" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/zh-CN/team" target="_self">团队</a></li><li class=""><a href="https://opencollective.com/verdaccio" target="_self">捐赠</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/unit-testing">English</a></li><li><a href="/docs/es-ES/unit-testing">Español</a></li><li><a href="/docs/fr-FR/unit-testing">Français</a></li><li><a href="/docs/it-IT/unit-testing">Italiano</a></li><li><a href="https://crowdin.com/project/verdaccio" target="_blank" rel="noreferrer noopener">帮助翻译</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -47,111 +47,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/verdaccio/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">单元测试</h1></header><article><div><span><p>所有测试都被分成3 个文件夹：</p>
-<ul>
-<li><code>test/unit</code> - 涵盖非平凡方式转换数据的功能测试。这些测试只 <code>require()</code> 一些文件并在其中运行代码，因此它们是非常快的。</li>
-<li><code>test/functional</code> - 启动verdaccio instance并在 http上执行一系列请求的测试。它们比单元测试慢一些。</li>
-<li><code>test/integration</code> - 启动verdaccio instance并用 npm对其执行请求的测试。它们真的很慢并能打击到真的npm registry。 <strong>unmaintained test</strong></li>
-</ul>
-<p>单元和功能测试是从项目根目录里运行 <code>npm test</code> 来自动执行的。集成测试应该时常手动执行。</p>
-<p>我们所有测试都使用 <code>jest</code>。</p>
-<h2><a class="anchor" aria-hidden="true" id="npm-脚本"></a><a href="#npm-脚本" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Npm 脚本</h2>
-<p>要运行测试脚本，您可以使用 <code>npm</code> 或 <code>yarn</code>。</p>
-<pre><code class="hljs">yarn run test
-</code></pre>
-<p>这将只会触发测试，单元和功能的前两组。</p>
-<h3><a class="anchor" aria-hidden="true" id="使用测试-单元"></a><a href="#使用测试-单元" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用测试/单元</h3>
-<p>以下只是单元测试的一个例子。基本上遵守<code>jest</code> 标准。</p>
-<p>请试着描述单元在 <code>test</code> 部分页眉里的单一句子里确切测试什么。</p>
-<pre><code class="hljs css languages- javacript"><span class="hljs-keyword">const</span> verdaccio = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/api/index'</span>);
-<span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./partials/config'</span>);
-
-describe(<span class="hljs-string">'basic system test'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-
-  beforeAll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{
-    <span class="hljs-comment">// something important</span>
-  });
-
-  afterAll(<span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
-    <span class="hljs-comment">// undo something important</span>
-  });
-
-  test(<span class="hljs-string">'server should respond on /'</span>, <span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
-    <span class="hljs-comment">// your test</span>
-    done();
-  });
-});
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="使用测试-功能"></a><a href="#使用测试-功能" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用测试/功能</h3>
-<p>Verdaccio 中的功能测试有点复杂，需要深入解释来让您有成功的体验。</p>
-<p>一切从<code>index.js</code>文件开始。让我们来深入了解它吧。</p>
-<pre><code class="hljs css languages- javascript"><span class="hljs-comment">// we create 3 server instances</span>
- <span class="hljs-keyword">const</span> config1 = <span class="hljs-keyword">new</span> VerdaccioConfig(
-    <span class="hljs-string">'./store/test-storage'</span>,
-    <span class="hljs-string">'./store/config-1.yaml'</span>,
-    <span class="hljs-string">'http://localhost:55551/'</span>);
-  <span class="hljs-keyword">const</span> config2 = <span class="hljs-keyword">new</span> VerdaccioConfig(
-      <span class="hljs-string">'./store/test-storage2'</span>,
-      <span class="hljs-string">'./store/config-2.yaml'</span>,
-      <span class="hljs-string">'http://localhost:55552/'</span>);
-  <span class="hljs-keyword">const</span> config3 = <span class="hljs-keyword">new</span> VerdaccioConfig(
-        <span class="hljs-string">'./store/test-storage3'</span>,
-        <span class="hljs-string">'./store/config-3.yaml'</span>,
-        <span class="hljs-string">'http://localhost:55553/'</span>);
-  <span class="hljs-keyword">const</span> server1: IServerBridge = <span class="hljs-keyword">new</span> Server(config1.domainPath);
-  <span class="hljs-keyword">const</span> server2: IServerBridge = <span class="hljs-keyword">new</span> Server(config2.domainPath);
-  <span class="hljs-keyword">const</span> server3: IServerBridge = <span class="hljs-keyword">new</span> Server(config3.domainPath);
-  <span class="hljs-keyword">const</span> process1: IServerProcess = <span class="hljs-keyword">new</span> VerdaccioProcess(config1, server1, SILENCE_LOG);
-  <span class="hljs-keyword">const</span> process2: IServerProcess = <span class="hljs-keyword">new</span> VerdaccioProcess(config2, server2, SILENCE_LOG);
-  <span class="hljs-keyword">const</span> process3: IServerProcess = <span class="hljs-keyword">new</span> VerdaccioProcess(config3, server3, SILENCE_LOG);
-  <span class="hljs-keyword">const</span> express: any = <span class="hljs-keyword">new</span> ExpressServer();
-  ...
-
-    <span class="hljs-comment">// we check whether all instances has been started, since run in independent processes</span>
-    beforeAll(<span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
-      <span class="hljs-built_in">Promise</span>.all([
-        process1.init(),
-        process2.init(),
-        process3.init()]).then(<span class="hljs-function">(<span class="hljs-params">forks</span>) =&gt;</span> {
-          _.map(forks, (fork) =&gt; {
-            processRunning.push(fork[<span class="hljs-number">0</span>]);
-          });
-          express.start(EXPRESS_PORT).then(<span class="hljs-function">(<span class="hljs-params">app</span>) =&gt;</span>{
-            done();
-          }, (err) =&gt; {
-            done(err);
-          });
-      }).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
-        done(error);
-      });
-    });
-
-    <span class="hljs-comment">// after finish all, we ensure are been stoped</span>
-    afterAll(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-      _.map(processRunning, (fork) =&gt; {
-        fork.stop();
-      });
-      express.server.close();
-    });
-
-
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="使用"></a><a href="#使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用</h3>
-<p>这里我们将描述常规功能测试看起来是什么样的，请核对内联了解更多详细信息。</p>
-<h4><a class="anchor" aria-hidden="true" id="the-lib-serverjs"></a><a href="#the-lib-serverjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The lib/server.js</h4>
-<p>服务器 class(类）只是模拟 <code>npm</code> client 的 wrapper类，它为功能测试提供简单的API。</p>
-<p>如我们在之前的章节里提到的， 我们正创建3 个流程服务器，可以在每个流程里以<code>server1</code>, <code>server2</code> 和 ``server3`进行访问。</p>
-<p>通过这样的引用，您可以给这任何3 个运行的instance 发送请求。</p>
-<pre><code class="hljs css languages- javascript">&lt;br /&gt;<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">server</span>) </span>{
-  <span class="hljs-comment">// we recieve any server instance via arguments</span>
-  test(<span class="hljs-string">'add tag - 404'</span>, () =&gt; {
-    <span class="hljs-comment">// we interact with the server instance.</span>
-    <span class="hljs-keyword">return</span> server.addTag(<span class="hljs-string">'testpkg-tag'</span>, <span class="hljs-string">'tagtagtag'</span>, <span class="hljs-string">'0.0.1'</span>).status(<span class="hljs-number">404</span>).body_error(<span class="hljs-regexp">/no such package/</span>);
-  });
-});
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="测试-集成"></a><a href="#测试-集成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>测试/集成</h3>
-<p>这些部分还没有被使用，但是我们在寻求帮助来让它正常运转。<strong>欢迎任何新的想法。</strong></p>
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/verdaccio/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">单元测试</h1></header><article><div><span><p>Verdaccio has strong focus on unit testing and end to end testing. If you are willing to contribute, please refer to the following <a href="https://github.com/verdaccio/verdaccio/wiki/Developing-new-tests">guide for more information</a>.</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-CN/source-code">← 源代码</a><a class="docs-next button" href="/docs/zh-CN/node-api">Node API →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo/symbol/svg/verdaccio-blackwhite.svg" alt="Verdaccio" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-CN/what-is-verdaccio.html">Getting Started</a><a href="/docs/zh-CN/docker.html">Docker</a><a href="/docs/zh-CN/configuration.html">Configuration</a><a href="/docs/zh-CN/logo">Logos</a></div><div><h5>Community</h5><a href="/zh-CN/users.html">User Showcase</a><a href="https://stackoverflow.com/search?q=verdaccio" target="_blank">Stack Overflow</a><a href="http://chat.verdaccio.org" target="_blank">Project Chat</a><a href="https://twitter.com/verdaccio_npm" target="_blank"><img alt="Follow Verdaccio on Twitter" src="https://img.shields.io/twitter/follow/verdaccio_npm.svg?label=Follow+Verdaccio&amp;style=social"/></a></div><div><h5>More</h5><a href="https://medium.com/verdaccio" target="_blank">Blog</a><a href="https://github.com/verdaccio" target="_blank">GitHub</a><a class="github-button" href="https://github.com/verdaccio/verdaccio" data-icon="octicon-star" data-count-href="/verdaccio/verdaccio/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
               var search = docsearch({
                 
